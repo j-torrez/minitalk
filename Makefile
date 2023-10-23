@@ -10,15 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT = so long
+PROJECT = minitalk
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-MLX42FLAGS = -Iinclude -ldl -lglfw -pthread -lm
-NAME = so_long
+NAME = minitalk
 LIBFT = ./Libft/libft.a
-MLX42 = ../../MLX42/build/libmlx42.a
 INCLUDE = -I./include
-SRC = SRC/main.c SRC/parse_map.c SRC/check_valid_map.c SRC/check_valid_map1.c initialize_struct.c utilities.c SRC/load_images.c SRC/generate_map.c SRC/get_position.c SRC/screen_data.c SRC/movement.c SRC/load_character_images.c SRC/game_state.c SRC/load_character.c SRC/movement_logic.c SRC/path_checker.c /
+SRC = SRC/main.c
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
@@ -34,9 +32,9 @@ RESET	= \x1b[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX42) $(OBJ)	
+$(NAME): $(LIBFT) $(OBJ)	
 	@echo "Compiled with $(BLUE)$(CFLAGS)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MLX42) $(MLX42FLAGS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 	@echo "$(GREEN)-------------------------------------------"
 	@echo "	$(NAME) = NOW READY FOR USE :D"
 	@echo "-------------------------------------------"
